@@ -1,0 +1,98 @@
+- asynchronous behavior with promises
+
+    promise: object which can be passed around or returned that holds
+    references to the outcome of asynchronous behavior
+
+    function asyncFunction() {
+        var deferred = $q.defer();
+
+        if (..) { deferred.resolve(result); }
+        else { deferred.resolve(error); }
+
+        return deferred.promise;
+    }
+
+    var promise = asyncFunction();
+
+    promise.then(
+        function (result) {
+        // do something with result
+         }),
+
+        function(error) {
+
+        });
+
+    //execute promises in parallel
+    $q.all([promise1, promise2 ...])
+
+- Ajax with $http Service
+    
+    $http({
+        method: "GET",
+        url: "http://someurl",
+        params: {param1: "value1"}
+    }).then(
+        function sucess(response) {
+            response.data
+        },
+
+        function error(response) {
+            response.data
+        }
+    );
+    
+
+
+- module.constant
+
+- directive: marker on a DOM element that tells Angulars HMTL compiler to attach a specified behavior to
+  that DOM elemnt
+
+  .directive('myTag', MyTag);
+
+  myTag => my-tag
+  directive definition object DDO
+
+  DDO: 
+    templateURL, 
+    restrict -> 'AE, attribute, element'
+    
+  how to make a derective independent from the controller: isolate scole
+
+    in DDO: scope: {
+            myProp: '=attributeName'
+                    '='
+                    '=?'
+                    '@attributeName'
+        }
+
+    declare controller in directive:
+
+        in DDO 
+            controller: ControllerFunction
+        
+    
+    directive APIs and "&"
+
+
+    DOM manipulation happens in link function (e.g. function in property link):
+
+        ddo: {
+            link: LinkFunction(scope,
+                            element,
+                            attrs,
+                            controller)
+        }
+
+
+    wrap arbitary content:
+
+    ddo: {
+        transclude: true or false
+    }
+    
+    parent -> directive
+    you can pass a whole template
+    
+    <div ng-transclude></div>

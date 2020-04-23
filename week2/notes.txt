@@ -1,0 +1,114 @@
+filters
+
+    $filter('uppercase')(value);
+
+    {{ "asd" | uppercase }}
+    {{ "asd" | curreny : arg1 : arg2 }}
+
+
+build custom filters:
+
+    1- Define Filter Factory function
+
+        function CustomFilterFactory() {
+            return function (input) {
+                ...
+                return changedInput;
+            };
+        }
+
+    2- filter registration
+
+        agnular.filter('custom', CustomFilterFactory);
+
+    3- filter injenction
+        Ctrl.$scope = ['$scope', 'customFilter'];
+
+        * notice the Filter suffix
+
+
+digest cycle:
+
+    - interpolation
+    - ng-model (two-way binding)
+    - one way, two way binding, 
+        one time-binding ( {{ :: my_prop }}) 
+        (it is more efficient, does not stack in the page memory)
+
+
+looping and controller as a syntax:
+
+    - ng-repeat, $index
+    - filtered ng-repeat
+    ng-repeat="item in collection | fitler : var"
+
+
+    - proptotypal inheritance
+
+        OOP inheritance:
+
+            what is inheritance: when a object or a class is based on 
+            another object or a class(parent), using the same implementation
+            and/pr the same values
+
+        JS Prototypal inheritance:
+
+            Is based on a parent instance (the prototype)
+            prototype chain
+
+
+        var parent = {};
+        var child = Object.create(parent);
+        
+        function constructors (be carefull with new keyword,
+         changes the meaning of this keyword inside the function)
+
+
+         scope inheritance:
+         inner controler inherits from outer ones
+
+            ng-controller="myController as ctrl1"
+                With the above declaretion each controller thas his own scope-enviroment 
+                *changes also the scope-enviroment
+
+
+    - custom services:
+
+
+    use controllers for:
+
+        - initial set up state of $scope
+        - add behavior to the $scope
+
+
+    controller should not be used for:
+
+        - business logic
+        - share code or state
+
+
+    service registration:
+
+    .   - service('CustomeService', CustomeService)
+        - a service is a singlenton
+        - lazily initialized
+
+    custom service factory:
+
+        .factory('CustomeService', CustomService)
+
+        function CustomService {
+            var factory = function () {
+                return new SomeService();
+            };
+
+            return factory;
+        }
+
+        .provide()
+        .config()
+
+        ng-if
+        ng-show
+        ng-hide
+

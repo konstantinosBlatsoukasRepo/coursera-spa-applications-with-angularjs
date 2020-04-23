@@ -1,0 +1,24 @@
+
+- model-view-view model ()
+
+    model -> raw data
+    view -> html
+    viewmodel -> controller
+- sharing data with the scope ($scope)
+
+- ngmodel 
+    <input type="text" ng-model="propert_name">
+
+- {{ }} , mustage notation
+
+- ng-keyup
+
+- dependency injenction
+
+how is implemented in js:
+
+    - ng-blur
+    - minification
+    - DIController.inject=['$scope', '']
+    - expressions and interpolation
+    - ng-src
