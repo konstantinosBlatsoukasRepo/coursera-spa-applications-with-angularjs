@@ -1,0 +1,40 @@
+- components
+
+    components only control their own View and Data
+
+    have well-defined public API - Inputs and Outputs
+
+    have well-defined lifecycle (onInit, onChanges, postLink, onDestroy)
+
+    Application is  atree of components
+
+- angularjs event system
+
+    communicating with the parent: 
+
+        1. $scope.$parent
+        2. using callback
+
+    communicatong with grandparent and gradnchild
+
+    communicating in multiplite components
+
+        publish-subscribe design pattern (channel is the scope, and messages are events)
+
+        $scope.$emit (goes up)
+        $scope.$broadcast (goes down)
+
+        $rootScope (broadcast from the root)
+
+        $rootScope.$broadcast
+
+        $rootScope.$on(eventName, handler)
+
+        register, deregister
+
+- modules
+
+    - declare/create modules
+
+
+ - coarse grained updates
