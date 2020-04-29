@@ -1,0 +1,66 @@
+<form name='signUpForm' ng-controller="SignUpFormController as SignUpFormCtrl" novalidate>
+    <input type="text" name="firstname" placeholder="First name"
+      ng-model="SignUpFormCtrl.firstname"
+      required
+      minlength="4"
+      ng-maxlength="10">
+      <span
+        ng-if="(signUpForm.username.$error.minlength || signUpForm.username.$error.required) && signUpForm.username.$touched">
+        Username must be at least 4 characters long
+      </span>
+      <span ng-if="signUpForm.username.$error.maxlength && signUpForm.username.$touched">
+        Username must not be longer than 10 characters
+      </span>
+      <br>
+
+      <input type="text" name="lastname" placeholder="Last name"
+      ng-model="SignUpFormCtrl.lastname"
+      required
+      minlength="4"
+      ng-maxlength="10">
+      <span
+        ng-if="(signUpForm.username.$error.minlength || signUpForm.username.$error.required) && signUpForm.username.$touched">
+        Username must be at least 4 characters long
+      </span>
+      <span ng-if="signUpForm.username.$error.maxlength && signUpForm.username.$touched">
+        Username must not be longer than 10 characters
+      </span>
+      <br>
+
+    <input type="email" name="email" placeholder="Email"
+      ng-model="SignUpFormCtrl.email"
+      required>
+      <span ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+        Must be a valid email address: handle@domain format
+      </span>
+      <br>
+
+    <input type="text" name="phone" placeholder="Phone ###-###-####"
+      ng-model="SignUpFormCtrl.phone"
+      required
+      pattern="(\d{3})-(\d{3})-(\d{4})">
+      <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+        Phone must be in the format ###-###-####.
+      </span>
+      <br>
+
+    <input type="text" name="menunumber" placeholder="Menu Number"
+      required
+      ng-model="SignUpFormCtrl.menuNumber">
+      <span ng-if="signUpForm.menuNumber.$invalid && signUpForm.menuNumber.$touched">
+        Please provide a menu number
+      </span>
+      <br>
+
+    <button
+      ng-disabled="SignUpForm.$invalid"
+      ng-click="SignUpFormCtrl.getMenuItem(SignUpFormCtrl.menuNumber)">Submit</button>
+
+      <div style="margin-top: 10px;" ng-if="SignUpFormCtrl.submitted && SignUpFormCtrl.successful">
+        Your information has been saved!
+      </div>
+
+      <div style="margin-top: 10px;" ng-if="SignUpFormCtrl.submitted && !SignUpFormCtrl.successful">
+        No such menu number exists
+      </div>
+  </form>

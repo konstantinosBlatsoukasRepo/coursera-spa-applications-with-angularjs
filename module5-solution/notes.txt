@@ -1,0 +1,11 @@
+- validation
+
+    html validation:
+
+        required
+        min-length
+
+    angular validation:
+
+        formName.name.$error
+        $touched
